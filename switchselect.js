@@ -2,7 +2,7 @@
 ** Switchselect 1.0
 ** No copyrights or licenses.
 ** @author:     @harleyjessop
-** @repository: https://github.com/harleyjessop/boxtree.js
+** @repository: https://github.com/harleyjessop/switchselect.js
 **
 **/
 
