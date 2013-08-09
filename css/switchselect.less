@@ -1,12 +1,21 @@
-// Colors
+/*!
+ *  Switchselect 1.0
+ *  
+ *  Author - Harley Jessop
+ *  Twitter: @harleyjessop
+ */
+
+
+// Color Variables
 @white:         #ffffff;
 @grayDark:      #222222;
 @gray:          #888888;
 @grayLight:     #DDDDDD;
-@green: 	    #88BA0F; // rgba(136,186,15,1)
-@red:			#E54729; // rgba(229,71,41,1)
+@green:         #88BA0F; // rgba(136,186,15,1)
+@red:           #E54729; // rgba(229,71,41,1)
 
-// Gradients
+// Gradients Mixin
+// If you're using twitter bootstrap this can be removed
 #gradient {
   .horizontal(@startColor: #555, @endColor: #333) {
     background-color: @endColor;
@@ -30,102 +39,104 @@
   }
 }
 
+// The meat and bones of the switch
 .switch {
- 	background: @grayDark;
- 	border-radius: 5px;
- 	box-sizing: border-box;
- 	text-align: center;
- 	border:  none;
- 	border-top:1px solid @grayLight;
- 	border-bottom:1px solid @grayDark;
- 	box-shadow: 0 0 2px 1px @grayLight;
- 	width: 83px;
- 	height: 33px; 
- 	padding: 1px;
- 	margin-bottom: 5px;
- 	text-shadow: 0 1px 1px rgba(255,255,255,.75);
- 	color: @grayDark;
- 	vertical-align: top;
- 	margin-top: -2px;
- 	display: inline-block;
- 	position: relative;
- 	
- 	input[type='checkbox']{
- 	   display: none;
- 	}
-	span{
-	    height: 30px;
-	    width: 80px;
-	    display: block;
-	    #gradient > .vertical(@gray, @grayDark);
-	    border-radius: 4px;
-	    position: relative;
-	    z-index: 1;
-	}
+    background: @grayDark;
+    border-radius: 5px;
+    box-sizing: border-box;
+    text-align: center;
+    border:  none;
+    border-top:1px solid @grayLight;
+    border-bottom:1px solid @grayDark;
+    box-shadow: 0 0 2px 1px @grayLight;
+    width: 83px;
+    height: 33px; 
+    padding: 1px;
+    margin-bottom: 5px;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    color: @grayDark;
+    vertical-align: top;
+    margin-top: -2px;
+    display: inline-block;
+    position: relative;
+    
+    // No need to actually show the checkbox now is there. */
+    input[type='checkbox']{
+       display: none;
+    }
+    span{
+        height: 30px;
+        width: 80px;
+        display: block;
+        #gradient > .vertical(@gray, @grayDark);
+        border-radius: 4px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    // I know it's not very semantic to use the b tag here, but it does look and feel cleaner than using a div.
     b {
-	    width: 40px;
-	    display: inline-block;
-	    height: 30px;
-	    position: absolute;
-	    box-sizing: border-box;;
-	    line-height: 30px;
-	    -webkit-transform-style:preserve-3d;
-	    -moz-transform-style:preserve-3d;
-	    cursor: pointer;
-	    -webkit-transition:250ms linear;
-	    -webkit-perspective:500;  
-	    -moz-transition:250ms linear;
-	    -moz-perspective:500;  
-	    z-index: 5;
-	    
+        width: 40px;
+        display: inline-block;
+        height: 30px;
+        position: absolute;
+        box-sizing: border-box;;
+        line-height: 30px;
+        -webkit-transform-style:preserve-3d;
+        -moz-transform-style:preserve-3d;
+        cursor: pointer;
+        -webkit-transition:250ms linear;
+        -webkit-perspective:500;  
+        -moz-transition:250ms linear;
+        -moz-perspective:500;  
+        z-index: 5;
+        
     }
     b:first-child{
-    	right: 40px;
-		border-radius: 4px 0 0 4px;
-		-webkit-transform:rotateY(0deg);
-		-moz-transform:rotateY(0deg);
-		box-shadow: inset 1px 0 2px rgba(0,0,0,0.5), 0 0 0 0 rgba(0,0,0,0.75);
-		-webkit-transform-origin:top right;
-		-moz-transform-origin: top right;
-		transform-origin: top right;
-		#gradient > .horizontal(@grayLight, @white);
-		background-size: 120px;
-		background-position: -80px 0;
-		color: @red;
+        right: 40px;
+        border-radius: 4px 0 0 4px;
+        -webkit-transform:rotateY(0deg);
+        -moz-transform:rotateY(0deg);
+        box-shadow: inset 1px 0 2px rgba(0,0,0,0.5), 0 0 0 0 rgba(0,0,0,0.75);
+        -webkit-transform-origin:top right;
+        -moz-transform-origin: top right;
+        transform-origin: top right;
+        #gradient > .horizontal(@grayLight, @white);
+        background-size: 120px;
+        background-position: -80px 0;
+        color: @red;
     }
     b:last-child{
-    	left: 40px;
-    	border-radius: 0 4px 4px 0;
-	    box-shadow: inset -1px 0 2px rgba(0,0,0,0.5), 3px 7px 10px -5px rgba(0,0,0,0.5);
-		-webkit-transform:rotateY(-20deg);
-		-moz-transform:rotateY(-20deg);
-		-webkit-transform-origin:top left;
-		-moz-transform-origin: top left;
-		transform-origin: top left;
-		#gradient > .horizontal(@white, @grayLight);
-		background-repeat: no-repeat;
-		background-position: -40px 0;
-		background-size: 120px;
+        left: 40px;
+        border-radius: 0 4px 4px 0;
+        box-shadow: inset -1px 0 2px rgba(0,0,0,0.5), 3px 7px 10px -5px rgba(0,0,0,0.5);
+        -webkit-transform:rotateY(-20deg);
+        -moz-transform:rotateY(-20deg);
+        -webkit-transform-origin:top left;
+        -moz-transform-origin: top left;
+        transform-origin: top left;
+        #gradient > .horizontal(@white, @grayLight);
+        background-repeat: no-repeat;
+        background-position: -40px 0;
+        background-size: 120px;
 
     }
-	&.on b:first-child,
-	:checked + span b:first-child {
-		color: @grayDark;
-		-webkit-transform:rotateY(20deg);
-		-moz-transform:rotateY(20deg);
-		background-position: 0px 0px;
-		outline-left: 5px solid @gray;
-		box-shadow: inset 1px 0 2px rgba(0,0,0,0.5), -3px 7px 10px -5px rgba(0,0,0,0.5);
-	}
-	&.on b:last-child,
-	:checked + span b:last-child{
-		color: @green;
-		-webkit-transform:rotateY(0deg);
-		-moz-transform:rotateY(0deg);
-		background-position: 0 0px;
-		box-shadow: inset -1px 0 2px rgba(0,0,0,0.5), 0 0 0 0 rgba(0,0,0,0.5);
+    :checked + span b:first-child {
+        color: @grayDark;
+        -webkit-transform:rotateY(20deg);
+        -moz-transform:rotateY(20deg);
+        background-position: 0px 0px;
+        outline-left: 5px solid @gray;
+        box-shadow: inset 1px 0 2px rgba(0,0,0,0.5), -3px 7px 10px -5px rgba(0,0,0,0.5);
+    }
+    :checked + span b:last-child{
+        color: @green;
+        -webkit-transform:rotateY(0deg);
+        -moz-transform:rotateY(0deg);
+        background-position: 0 0px;
+        box-shadow: inset -1px 0 2px rgba(0,0,0,0.5), 0 0 0 0 rgba(0,0,0,0.5);
 
-	}
+    }
 }
 
 
